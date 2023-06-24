@@ -1,0 +1,43 @@
+<!-- 
+10. Design a login form using HTML & JavaScript with 
+following validations on username and password fields: 
+i. Password length must be 6 to 12 characters. 
+ii. Username should not start with _, @ or number. 
+Both should not be blank.  -->
+<html>
+
+<head>
+    <script>
+        function checkForm(form) {
+            if (form.username.value == "") {
+                alert("Username should not be blank")
+                return false;
+            }
+            re = /^[A-Za-z]+[A-Za-z0-9_]*$/;
+            if (!re.test(form.username.value)) {
+                alert("Username should not start with _, @ or number. ");
+                return false;
+            }
+            if (form.password.value == "") {
+                alert("Password should not be blank");
+                return false;
+            }
+            if (form.password.value.length < 6 || form.password.value.length > 12) {
+                alert("Password length must be 6 to 12 characters.");
+                return false;
+            }
+            alert("Thank You");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <form onsubmit="return checkForm(this);" style="text-align:center;">
+        <p>Username:<input type="text" name="username"></p>
+        <p>Password:<input type="text" name="password"></p>
+        <input type="submit"></p>
+    </form>
+</body>
+
+</html>
